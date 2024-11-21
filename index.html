@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>টুর্নামেন্ট রেজিস্ট্রেশন</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-container .form-label {
+            color: #000;
+        }
+
+        .form-container .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            color: #000;
+        }
+
+        .form-container .input-group-text {
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .btn-submit {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+        }
+
+        .spinner-border {
+            display: none;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 70%;
+            max-width: 500px;
+        }
+
+        .popup h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .popup button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #45a049;
+        }
+
+        .popup-success {
+            color: #4CAF50;
+        }
+
+        .popup-error {
+            color: #f44336;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            color: #000;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #4CAF50;
+            opacity: 0;
+            animation: checkmarkAnimation 1s ease-in-out forwards;
+        }
+
+        @keyframes checkmarkAnimation {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.2);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="text-center">টুর্নামেন্ট রেজিস্ট্রেশন</h2>
+            <!-- Formspree action URL added here -->
+            <form action="https://formspree.io/f/mnnqzlgy" method="POST" enctype="multipart/form-data" id="registrationForm">
+                <div class="mb-3">
+                    <label for="playerName" class="form-label">প্লেয়ারের নাম</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" class="form-control" id="playerName" name="playerName" placeholder="আপনার নাম লিখুন" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="playerID" class="form-label">প্লেয়ার আইডি</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        <input type="text" class="form-control" id="playerID" name="playerID" placeholder="প্লেয়ার আইডি লিখুন" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">ইমেইল ঠিকানা</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="আপনার ইমেইল লিখুন" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">ফোন নম্বর</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="আপনার ফোন নম্বর লিখুন" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="gameMode" class="form-label">মোড নির্বাচন করুন</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-gamepad"></i></span>
+                        <select id="gameMode" name="gameMode" class="form-control" required>
+                            <option value="" disabled selected>মোড নির্বাচন করুন</option>
+                            <option value="solo-battle">Solo Battle Royale</option>
+                            <option value="solo-clash">Solo Clash Squad</option>
+                            <option value="solo-lone-wolf">Solo Lone Wolf</option>
+                            <option value="duo-battle">Duo Battle Royale</option>
+                            <option value="duo-clash">Duo Clash Squad</option>
+                            <option value="duo-lone-wolf">Duo Lone Wolf</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="paymentScreenshotUpload" class="form-label">পেমেন্ট স্ক্রিনশট আপলোড করুন</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-upload"></i></span>
+                        <input type="file" class="form-control" id="paymentScreenshotUpload" name="paymentScreenshotUpload" accept="image/*" required>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="termsCheckbox" required>
+                    <label class="form-check-label" for="termsCheckbox">আমি টুর্নামেন্টের শর্তাবলী মেনে চলতে সম্মত।</label>
+                </div>
+                <button type="submit" class="btn-submit" id="submitButton">
+                    <span id="submitText">রেজিস্ট্রেশন করুন</span>
+                    <div class="spinner-border spinner-border-sm text-light" role="status" id="loadingSpinner">
+                        <span class="visually-hidden">লোড হচ্ছে...</span>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pop-up Overlay -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup">
+            <div class="checkmark">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="popup-success">রেজিস্ট্রেশন সফল হয়েছে!</h3>
+            <p>আপনার রেজিস্ট্রেশন সফলভাবে সম্পন্ন হয়েছে।</p>
+            <button onclick="closePopup()">বন্ধ করুন</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Handle form submission and show loading spinner
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('submitButton').disabled = true; // Disable the submit button
+            document.getElementById('loadingSpinner').style.display = 'inline-block'; // Show loading spinner
+            document.getElementById('submitText').style.display = 'none'; // Hide submit text
+
+            // Simulate successful form submission (you can replace this with actual form submission)
+            setTimeout(function () {
+                // Show success popup
+                document.getElementById('popupOverlay').style.display = 'flex';
+
+                // Reset form after successful submission
+                document.getElementById('registrationForm').reset();
+                document.getElementById('submitButton').disabled = false;
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('submitText').style.display = 'inline';
+            }, 2000); // 2 seconds delay to simulate successful submission
+        });
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
